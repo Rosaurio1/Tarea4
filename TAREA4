@@ -1,0 +1,1332 @@
+*****En las siguientes 4 parrafos de codigo se crean las tablas llamadas: 
+PROP: Es la tabla de los lugares por estado y ciudad asi como el ID
+ORDERS: Tabla que contiene datos de fechas en que se realizo el pedido, producto, lugar y la cantidad
+PROD: Tabla que tiene el nombre de los productos asi como su ID, categoria y precio
+SALE: Tabla que tiene el estado, ciudad, nombre del producto asi como las ventas ****;
+DATA PROP;
+	INPUT  PropertyID PropertyCity $ PropertyState $;
+	DATALINES;
+	1 NY NY
+	2 Cincy Ohio
+	3 Portland Oregon
+	4 Seattle WA
+	5 Kansas Missouri
+	6 Orlando Florida
+	7 Boston MA
+	8 Phila PA
+	9 Richmond Virginia
+	10 Arlington Virginia
+	11 Atlanta Georgia
+	12 Dallas Texas
+	13 NoLa Louisiana
+	14 Nashville TN
+	15 Chicago Illinois
+	16 Denver Colorado
+	17 LasVegas Nevada
+	18 Phoenix Arizona
+	19 L.A CA
+	20 SanFran CA
+	;
+RUN;
+
+DATA ORDERS;
+INPUT OrderID OrderDate : MMDDYY10. PropertyID ProductID Quantity;
+DATALINES;
+1 01/01/2015 17 41 1
+2 01/01/2015 15 54 2
+3 01/01/2015 5 71 2
+4 01/01/2015 19 3 2
+5 01/01/2015 12 45 3
+6 01/01/2015 6 94 2
+7 01/01/2015 5 35 2
+8 01/02/2015 16 93 1
+9 01/02/2015 4 93 3
+10 01/02/2015 2 61 2
+11 01/02/2015 2 24 1
+12 01/02/2015 8 23 1
+13 01/02/2015 12 24 2
+14 01/03/2015 4 94 3
+15 01/03/2015 16 20 2
+16 01/03/2015 2 94 3
+17 01/03/2015 19 84 1
+18 01/03/2015 9 89 2
+19 01/03/2015 20 21 3
+20 01/03/2015 1 6 1
+21 01/03/2015 8 57 3
+22 01/03/2015 4 70 2
+23 01/04/2015 17 24 1
+24 01/04/2015 14 23 2
+25 01/04/2015 12 52 1
+26 01/04/2015 17 84 2
+27 01/04/2015 10 74 1
+28 01/05/2015 10 33 3
+29 01/05/2015 5 73 2
+30 01/05/2015 2 5 1
+31 01/05/2015 11 79 2
+32 01/06/2015 20 44 1
+33 01/06/2015 9 64 1
+34 01/06/2015 18 10 2
+35 01/06/2015 1 87 1
+36 01/06/2015 2 37 2
+37 01/06/2015 3 23 3
+38 01/06/2015 8 37 3
+39 01/06/2015 10 30 3
+40 01/06/2015 19 83 2
+41 01/07/2015 13 19 2
+42 01/07/2015 10 27 2
+43 01/07/2015 5 87 3
+44 01/07/2015 1 19 2
+45 01/07/2015 9 23 2
+46 01/08/2015 6 28 2
+47 01/08/2015 14 47 3
+48 01/08/2015 18 58 1
+49 01/08/2015 15 13 3
+50 01/08/2015 19 91 2
+51 01/08/2015 5 67 2
+52 01/08/2015 10 25 3
+53 01/09/2015 8 51 3
+54 01/09/2015 5 24 2
+55 01/09/2015 14 8 3
+56 01/10/2015 16 70 3
+57 01/10/2015 19 41 2
+58 01/10/2015 19 42 1
+59 01/10/2015 13 93 2
+60 01/10/2015 13 42 2
+61 01/10/2015 1 18 3
+62 01/10/2015 2 59 1
+63 01/10/2015 7 19 2
+64 01/11/2015 1 73 2
+65 01/11/2015 6 83 1
+66 01/11/2015 3 74 1
+67 01/11/2015 5 70 2
+68 01/11/2015 6 84 3
+69 01/11/2015 2 48 2
+70 01/11/2015 14 65 1
+71 01/12/2015 19 30 1
+72 01/12/2015 10 36 1
+73 01/12/2015 11 25 3
+74 01/12/2015 17 16 3
+75 01/12/2015 3 27 2
+76 01/12/2015 2 44 1
+77 01/13/2015 18 44 3
+78 01/13/2015 14 72 1
+79 01/13/2015 16 39 3
+80 01/13/2015 8 85 1
+81 01/13/2015 2 75 2
+82 01/14/2015 7 60 1
+83 01/14/2015 20 53 1
+84 01/14/2015 11 67 2
+85 01/14/2015 20 65 1
+86 01/14/2015 6 94 1
+87 01/14/2015 14 44 3
+88 01/14/2015 6 58 1
+89 01/14/2015 9 59 3
+90 01/15/2015 13 84 1
+91 01/15/2015 16 16 3
+92 01/15/2015 2 58 3
+93 01/15/2015 4 73 1
+94 01/15/2015 19 59 2
+95 01/15/2015 12 84 3
+96 01/16/2015 3 92 3
+97 01/16/2015 12 34 2
+98 01/16/2015 12 34 3
+99 01/16/2015 1 64 2
+100 01/16/2015 10 24 1
+101 01/16/2015 12 31 3
+102 01/16/2015 8 73 1
+103 01/17/2015 19 78 1
+104 01/17/2015 11 16 3
+105 01/17/2015 4 50 2
+106 01/17/2015 14 85 2
+107 01/17/2015 16 56 2
+108 01/18/2015 4 25 1
+109 01/18/2015 13 90 2
+110 01/18/2015 3 72 2
+111 01/18/2015 3 39 2
+112 01/18/2015 15 10 1
+113 01/18/2015 15 15 3
+114 01/18/2015 3 75 1
+115 01/19/2015 10 4 2
+116 01/19/2015 8 47 2
+117 01/19/2015 15 34 3
+118 01/20/2015 13 10 2
+119 01/20/2015 17 79 2
+120 01/20/2015 19 72 3
+121 01/20/2015 5 5 2
+122 01/20/2015 13 7 3
+123 01/21/2015 20 22 1
+124 01/21/2015 10 2 2
+125 01/21/2015 11 3 3
+126 01/21/2015 16 45 3
+127 01/21/2015 18 91 1
+128 01/21/2015 11 41 2
+129 01/22/2015 2 39 1
+130 01/22/2015 1 56 3
+131 01/22/2015 4 59 3
+132 01/22/2015 11 67 3
+133 01/22/2015 9 29 3
+134 01/22/2015 6 37 2
+135 01/22/2015 4 38 1
+136 01/22/2015 15 36 3
+137 01/22/2015 15 66 1
+138 01/22/2015 8 61 2
+139 01/23/2015 8 2 3
+140 01/23/2015 17 78 1
+141 01/23/2015 11 14 3
+142 01/23/2015 17 88 1
+143 01/23/2015 14 16 1
+144 01/23/2015 9 49 3
+145 01/23/2015 5 69 3
+146 01/23/2015 17 16 1
+147 01/23/2015 8 68 3
+148 01/23/2015 3 69 2
+149 01/23/2015 8 73 1
+150 01/24/2015 2 45 3
+151 01/24/2015 18 77 2
+152 01/24/2015 10 93 2
+153 01/24/2015 17 50 3
+154 01/24/2015 20 14 1
+155 01/24/2015 1 52 3
+156 01/24/2015 19 6 3
+157 01/24/2015 9 56 2
+158 01/24/2015 14 37 3
+159 01/25/2015 9 90 3
+160 01/25/2015 4 65 1
+161 01/25/2015 18 58 2
+162 01/25/2015 9 24 2
+163 01/25/2015 17 41 2
+164 01/25/2015 13 50 2
+165 01/25/2015 4 93 3
+166 01/25/2015 16 82 3
+167 01/25/2015 8 13 3
+168 01/26/2015 13 42 1
+169 01/26/2015 8 90 2
+170 01/26/2015 12 14 1
+171 01/26/2015 7 9 1
+172 01/26/2015 15 27 2
+173 01/27/2015 17 92 2
+174 01/27/2015 19 38 1
+175 01/27/2015 20 87 3
+176 01/27/2015 6 1 1
+177 01/27/2015 20 67 2
+178 01/27/2015 2 52 3
+179 01/27/2015 20 68 1
+180 01/27/2015 19 56 2
+181 01/27/2015 13 81 3
+182 01/27/2015 5 72 2
+183 01/27/2015 9 16 2
+184 01/28/2015 5 51 2
+185 01/28/2015 2 24 1
+186 01/28/2015 6 35 1
+187 01/28/2015 20 11 3
+188 01/28/2015 10 3 2
+189 01/29/2015 14 64 1
+190 01/29/2015 12 6 2
+191 01/29/2015 17 70 1
+192 01/29/2015 13 60 2
+193 01/30/2015 18 68 2
+194 01/30/2015 17 62 1
+195 01/30/2015 8 36 1
+196 01/30/2015 12 71 2
+197 01/30/2015 12 54 2
+198 01/30/2015 13 52 1
+199 01/30/2015 20 58 3
+200 01/31/2015 16 25 2
+201 01/31/2015 14 27 3
+202 01/31/2015 10 5 1
+203 02/01/2015 18 11 2
+204 02/01/2015 15 65 2
+205 02/02/2015 1 42 3
+206 02/02/2015 18 2 2
+207 02/02/2015 7 53 1
+208 02/02/2015 4 8 1
+209 02/02/2015 2 63 1
+210 02/02/2015 1 3 3
+211 02/02/2015 17 75 3
+212 02/02/2015 3 36 2
+213 02/03/2015 3 33 3
+214 02/03/2015 14 58 3
+215 02/03/2015 5 39 1
+216 02/03/2015 3 54 2
+217 02/03/2015 19 81 1
+218 02/03/2015 17 94 2
+219 02/04/2015 1 2 3
+220 02/04/2015 12 36 2
+221 02/04/2015 1 53 3
+222 02/05/2015 10 22 2
+223 02/05/2015 1 6 3
+224 02/05/2015 3 72 1
+225 02/05/2015 2 9 1
+226 02/06/2015 8 80 3
+227 02/06/2015 7 46 1
+228 02/06/2015 8 71 2
+229 02/06/2015 15 30 2
+230 02/07/2015 4 39 2
+231 02/08/2015 3 36 1
+232 02/08/2015 10 29 1
+233 02/08/2015 9 64 1
+234 02/08/2015 13 58 1
+235 02/08/2015 1 5 1
+236 02/08/2015 20 74 3
+237 02/08/2015 7 33 2
+238 02/09/2015 4 36 3
+239 02/09/2015 17 34 3
+240 02/09/2015 3 67 1
+241 02/09/2015 20 93 1
+242 02/09/2015 2 69 2
+243 02/09/2015 7 53 2
+244 02/10/2015 16 40 1
+245 02/10/2015 19 15 3
+246 02/10/2015 16 92 1
+247 02/10/2015 16 39 1
+248 02/10/2015 16 19 2
+249 02/10/2015 5 49 3
+250 02/10/2015 14 50 2
+251 02/10/2015 14 66 1
+252 02/11/2015 14 30 1
+253 02/11/2015 5 12 3
+254 02/11/2015 7 31 1
+255 02/11/2015 11 78 3
+256 02/11/2015 9 42 1
+257 02/11/2015 20 65 2
+258 02/11/2015 6 61 2
+259 02/11/2015 5 89 2
+260 02/11/2015 14 47 2
+261 02/11/2015 17 38 2
+262 02/12/2015 12 19 2
+263 02/12/2015 12 37 2
+264 02/12/2015 13 55 2
+265 02/12/2015 14 2 2
+266 02/12/2015 8 91 1
+267 02/12/2015 10 55 1
+268 02/12/2015 5 55 2
+269 02/13/2015 7 49 3
+270 02/13/2015 8 81 2
+271 02/13/2015 10 86 2
+272 02/13/2015 9 38 2
+273 02/13/2015 12 58 3
+274 02/13/2015 5 49 1
+275 02/13/2015 8 72 3
+276 02/13/2015 19 91 2
+277 02/13/2015 12 75 2
+278 02/13/2015 1 84 1
+279 02/14/2015 6 51 3
+280 02/14/2015 5 5 2
+281 02/14/2015 14 44 1
+282 02/14/2015 20 6 2
+283 02/14/2015 3 61 2
+284 02/14/2015 15 17 3
+285 02/14/2015 7 44 2
+286 02/15/2015 13 93 1
+287 02/15/2015 18 21 3
+288 02/15/2015 16 48 2
+289 02/15/2015 10 40 2
+290 02/15/2015 11 9 1
+291 02/15/2015 10 12 1
+292 02/15/2015 8 90 3
+293 02/15/2015 12 38 2
+294 02/16/2015 19 63 3
+295 02/16/2015 18 51 2
+296 02/16/2015 16 70 3
+297 02/16/2015 18 61 2
+298 02/16/2015 12 14 1
+299 02/16/2015 4 4 2
+300 02/16/2015 20 80 3
+301 02/16/2015 20 33 1
+302 02/17/2015 17 65 2
+303 02/17/2015 16 35 3
+304 02/17/2015 8 67 1
+305 02/17/2015 4 47 2
+306 02/17/2015 10 87 3
+307 02/17/2015 19 77 1
+308 02/17/2015 12 27 3
+309 02/17/2015 12 60 1
+310 02/18/2015 5 79 2
+311 02/18/2015 17 4 3
+312 02/18/2015 7 15 2
+313 02/18/2015 5 61 1
+314 02/18/2015 15 38 1
+315 02/19/2015 20 75 3
+316 02/19/2015 9 34 1
+317 02/19/2015 13 94 1
+318 02/19/2015 15 69 3
+319 02/19/2015 3 9 2
+320 02/19/2015 3 43 1
+321 02/20/2015 18 21 3
+322 02/20/2015 18 18 1
+323 02/20/2015 15 73 2
+324 02/20/2015 12 18 1
+325 02/20/2015 18 23 1
+326 02/20/2015 18 67 2
+327 02/20/2015 1 34 1
+328 02/20/2015 9 8 2
+329 02/20/2015 10 84 3
+330 02/20/2015 14 61 2
+331 02/20/2015 10 91 1
+332 02/20/2015 5 55 1
+333 02/21/2015 18 12 1
+334 02/21/2015 4 8 2
+335 02/21/2015 12 63 3
+336 02/21/2015 6 43 3
+337 02/21/2015 8 18 1
+338 02/21/2015 5 62 3
+339 02/21/2015 7 14 2
+340 02/21/2015 17 36 3
+341 02/21/2015 19 29 3
+342 02/21/2015 4 8 2
+343 02/21/2015 3 18 1
+344 02/22/2015 12 69 1
+345 02/22/2015 20 42 1
+346 02/22/2015 5 84 1
+347 02/22/2015 8 85 2
+348 02/22/2015 2 24 1
+349 02/22/2015 7 81 1
+350 02/22/2015 20 54 3
+351 02/22/2015 8 5 1
+352 02/23/2015 2 3 1
+353 02/23/2015 5 39 1
+354 02/23/2015 16 34 1
+355 02/23/2015 5 76 2
+356 02/24/2015 16 28 3
+357 02/24/2015 11 61 1
+358 02/24/2015 13 42 1
+359 02/24/2015 9 46 1
+360 02/24/2015 6 24 3
+361 02/24/2015 7 72 2
+362 02/24/2015 2 21 3
+363 02/24/2015 12 88 2
+364 02/24/2015 20 25 1
+365 02/24/2015 16 2 2
+366 02/24/2015 4 16 3
+367 02/24/2015 15 61 3
+368 02/25/2015 3 89 2
+369 02/25/2015 7 38 3
+370 02/25/2015 6 3 1
+371 02/25/2015 17 64 2
+372 02/26/2015 9 67 2
+373 02/26/2015 6 27 3
+374 02/26/2015 9 17 3
+375 02/26/2015 4 63 2
+376 02/26/2015 10 52 2
+377 02/27/2015 16 9 1
+378 02/27/2015 5 41 3
+379 02/27/2015 2 4 3
+380 02/27/2015 9 65 2
+381 02/27/2015 16 90 1
+382 02/27/2015 8 70 1
+383 02/27/2015 20 47 1
+384 02/27/2015 9 87 1
+385 02/27/2015 15 45 3
+386 02/27/2015 6 7 1
+387 02/27/2015 20 33 3
+388 02/27/2015 20 62 3
+389 02/28/2015 8 16 1
+390 02/28/2015 14 64 2
+391 02/28/2015 7 74 1
+392 02/28/2015 2 90 3
+393 02/28/2015 8 22 3
+394 02/28/2015 4 36 3
+395 02/28/2015 9 26 2
+396 02/28/2015 8 22 3
+397 03/01/2015 8 55 1
+398 03/01/2015 4 60 3
+399 03/01/2015 12 13 2
+400 03/01/2015 11 7 2
+401 03/01/2015 7 94 1
+402 03/01/2015 16 93 1
+403 03/01/2015 13 76 2
+404 03/02/2015 9 35 1
+405 03/02/2015 2 73 1
+406 03/02/2015 20 57 2
+407 03/02/2015 9 6 1
+408 03/02/2015 13 51 3
+409 03/02/2015 13 56 1
+410 03/02/2015 15 32 3
+411 03/03/2015 16 30 1
+412 03/03/2015 17 29 1
+413 03/03/2015 11 49 3
+414 03/03/2015 9 46 2
+415 03/03/2015 11 76 1
+416 03/03/2015 15 59 3
+417 03/03/2015 8 16 1
+418 03/03/2015 14 5 1
+419 03/03/2015 11 12 1
+420 03/03/2015 19 93 2
+421 03/03/2015 19 48 3
+422 03/04/2015 13 75 2
+423 03/04/2015 4 22 1
+424 03/04/2015 8 15 3
+425 03/04/2015 14 45 1
+426 03/04/2015 7 76 3
+427 03/04/2015 1 87 2
+428 03/05/2015 14 23 2
+429 03/05/2015 9 83 3
+430 03/05/2015 6 67 3
+431 03/05/2015 17 87 2
+432 03/06/2015 19 36 1
+433 03/06/2015 1 88 2
+434 03/06/2015 11 36 2
+435 03/06/2015 8 25 2
+436 03/06/2015 13 44 3
+437 03/06/2015 1 78 3
+438 03/06/2015 7 30 3
+439 03/06/2015 5 78 2
+440 03/07/2015 20 54 3
+441 03/07/2015 6 19 3
+442 03/07/2015 16 30 2
+443 03/07/2015 18 29 3
+444 03/07/2015 10 3 3
+445 03/07/2015 3 67 1
+446 03/08/2015 18 44 2
+447 03/08/2015 11 10 3
+448 03/08/2015 8 85 1
+449 03/08/2015 11 61 2
+450 03/08/2015 14 53 1
+451 03/08/2015 5 4 3
+452 03/09/2015 12 55 2
+453 03/09/2015 7 41 3
+454 03/09/2015 20 10 2
+455 03/09/2015 2 59 3
+456 03/10/2015 5 73 2
+457 03/10/2015 2 90 1
+458 03/10/2015 20 22 2
+459 03/11/2015 17 80 2
+460 03/11/2015 4 15 1
+461 03/11/2015 8 53 1
+462 03/11/2015 20 18 3
+463 03/11/2015 19 2 2
+464 03/12/2015 19 83 3
+465 03/12/2015 1 15 2
+466 03/12/2015 8 6 2
+467 03/12/2015 18 48 3
+468 03/13/2015 1 14 2
+469 03/13/2015 11 47 3
+470 03/13/2015 6 46 2
+471 03/13/2015 12 73 2
+472 03/13/2015 19 77 3
+473 03/13/2015 11 81 3
+474 03/14/2015 8 19 2
+475 03/14/2015 13 91 2
+476 03/14/2015 4 89 1
+477 03/14/2015 2 14 2
+478 03/14/2015 9 25 1
+479 03/14/2015 8 80 1
+480 03/14/2015 16 24 2
+481 03/14/2015 7 28 3
+482 03/14/2015 6 83 3
+483 03/14/2015 3 42 1
+484 03/15/2015 20 10 1
+485 03/15/2015 14 69 3
+486 03/15/2015 13 37 2
+487 03/15/2015 5 73 1
+488 03/15/2015 8 1 1
+489 03/15/2015 2 26 1
+490 03/15/2015 16 83 3
+491 03/15/2015 20 34 1
+492 03/15/2015 13 1 1
+493 03/16/2015 19 94 1
+494 03/16/2015 10 11 3
+495 03/16/2015 13 8 2
+496 03/16/2015 20 38 1
+497 03/16/2015 13 44 1
+498 03/17/2015 20 25 1
+499 03/17/2015 18 73 1
+500 03/18/2015 12 12 1
+;
+RUN;
+
+DATA PROD;
+INPUT ProductID ProductName $ ProductCategory $ Price;
+DATALINES;
+1 LargeTowel Housekeeping 9
+2 HandTowel Housekeeping 5
+3 Washcloth Housekeeping 3
+4 Shampoo Housekeeping 40
+5 Moisturizer Housekeeping 40
+6 Conditioner Housekeeping 40
+7 HandSoap Housekeeping 35
+8 BathSoap Housekeeping 35
+9 Tissues Housekeeping 14
+10 ToiletPaper Housekeeping 19
+11 ShowerCap Housekeeping 10
+12 BedSheetKing Housekeeping 29
+13 BedSheetDouble Housekeeping 20
+14 Pillowcase Housekeeping 15
+15 DrinkingGlass Housekeeping 24
+16 Mouthwash Housekeeping 40
+17 ClothesHanger Housekeeping 18
+18 CoffeeCup Housekeeping 24
+19 LightBulb Housekeeping 17
+20 PensOffice Supplies 30
+21 PrinterPaper OfficeSupplies 50
+22 PaperClips OfficeSupplies 3
+23 PrinterToner OfficeSupplies 85
+24 EnveloLetter OfficeSupplies 24
+25 EnveloLegal OfficeSupplies 28
+26 EnveloCatalog OfficeSupplies 13
+27 InvisibleTape OfficeSupplies 8
+28 StaplesOffice Supplies 8
+29 ErasableMarkers OfficeSupplies 6
+30 PermanentMarkers OfficeSupplies 6
+31 StickyNotes OfficeSupplies 20
+32 NotePads OfficeSupplies 14
+33 TowelRack Furnishings 10
+34 ShowerCurtain Furnishings 5
+35 TissueBox Furnishings 25
+36 Armoire Furnishings 115
+37 BedKing Furnishings 300
+38 BedDouble Furnishings 250
+39 AlarmClock Furnishings 45
+40 CoffeeMaker Furnishings 119
+41 OfficeChair Furnishings 85
+42 ReadingChair Furnishings 70
+43 TableLamp Furnishings 38
+44 FloorLamp Furnishings 55
+45 ComputerDesk Furnishings 102
+46 Safe Furnishings 115
+47 SwivelChair Furnishings 75
+48 SideTable Furnishings 40
+49 LargeVase Furnishings 27
+50 SmallVase Furnishings 33
+51 Painting Furnishings 85
+52 IroningBoard Furnishings 18
+53 Iron Furnishings 20
+54 ChestofDrawers Furnishings 150
+55 Television Furnishings 200
+56 Telephone Furnishings 38
+57 WirelessRouter Furnishings 70
+58 Mirror Furnishings 85
+59 Screws Maintenance 14
+60 PortableDrill Maintenance 195
+61 TapeMeasure Maintenance 8
+62 LeafBlower Maintenance 202
+63 DuctTape Maintenance 27
+64 Gaffer'sTape Maintenance 27
+65 Ladder Maintenance 89
+66 WoodGlue Maintenance 21
+67 AdjustableWrench Maintenance 10
+68 WindowScreen Maintenance 30
+69 DoorKnob Maintenance 41
+70 DoorLock Maintenance 117
+71 Hammer Maintenance 17
+72 Nails Maintenance 12
+73 Mop Maintenance 15
+74 LargePlant PublicAreas 35
+75 SmallPlant PublicAreas 25
+76 Ficus PublicAreas 80
+77 LargeAreaRug PublicAreas 40
+78 SmallAreaRug PublicAreas 20
+79 CoffeeTable PublicAreas 103
+80 PosterStand PublicAreas 27
+81 FlyerHolder PublicAreas 3
+82 BusinessCards PublicAreas 60
+83 BarStool PublicAreas 60
+84 TallChair PublicAreas 75
+85 LowChair PublicAreas 80
+86 Sofa PublicAreas 215
+87 EndTable PublicAreas 30
+88 ServingTray PublicAreas 6
+89 Photograph PublicAreas 45
+90 LuggageCart PublicAreas 138
+91 SmallSign PublicAreas 14
+92 LargeSign PublicAreas 20
+93 Terminal PublicAreas 85
+94 Monitor PublicAreas 70
+;
+RUN;
+
+DATA SALE;
+INPUT PropertyState $ PropertyCity $ ProductName $ Sales;
+DATALINES;
+Oregon Portland PortableDrill 3315
+TN Nashville BedKing 3000
+Texas Dallas BedKing 3000
+WA Seattle LeafBlower 2828
+PA Phila BedKing 2700
+Florida Orlando BedKing 2700
+CA SanFran BedKing 2700
+Virginia Richmond LeafBlower 2626
+CA L.A PortableDrill 2535
+CA L.A BedDouble 2500
+Arizona Phoenix BedDouble 2500
+Florida Orlando Sofa 2365
+Missouri Kansas PortableDrill 2340
+Arizona Phoenix PortableDrill 2340
+Illinois Chicago BedDouble 2250
+PA Phila LuggageCart 2208
+Missouri Kansas Television 2200
+Virginia Arlington Sofa 2150
+MA Boston Sofa 2150
+Illinois Chicago Sofa 2150
+Ohio Cincy BedKing 2100
+Florida Orlando LuggageCart 2070
+Texas Dallas Television 2000
+Missouri Kansas BedDouble 2000
+Colorado Denver BedDouble 2000
+Oregon Portland ChestofDrawers 1950
+CA SanFran LeafBlower 1818
+Illinois Chicago LeafBlower 1818
+Georgia Atlanta BedKing 1800
+Georgia Atlanta Television 1800
+Colorado Denver BedKing 1800
+Virginia Arlington ChestofDrawers 1800
+NY NY BedKing 1800
+Missouri Kansas BedKing 1800
+NY NY LuggageCart 1794
+WA Seattle BedDouble 1750
+Virginia Richmond BedDouble 1750
+Louisiana NoLa Sofa 1720
+CA SanFran ChestofDrawers 1650
+CA L.A ChestofDrawers 1650
+CA L.A DoorLock 1638
+TN Nashville ComputerDesk 1632
+Missouri Kansas LeafBlower 1616
+Colorado Denver LeafBlower 1616
+MA Boston LeafBlower 1616
+Virginia Arlington Armoire 1610
+PA Phila Television 1600
+Illinois Chicago Television 1600
+CA SanFran PortableDrill 1560
+Illinois Chicago PortableDrill 1560
+Virginia Arlington CoffeeMaker 1547
+Louisiana NoLa LuggageCart 1518
+Ohio Cincy LuggageCart 1518
+Georgia Atlanta Sofa 1505
+Nevada LasVegas BedDouble 1500
+MA Boston BedDouble 1500
+Arizona Phoenix ChestofDrawers 1500
+Florida Orlando ChestofDrawers 1500
+Massachusetts Boston BedKing 1500
+Florida Orlando BedDouble 1500
+Arizona Phoenix BedKing 1500
+Virginia Richmond Safe 1495
+Louisiana NoLa LeafBlower 1414
+Texas Dallas LeafBlower 1414
+WA Seattle Monitor 1400
+Louisiana NoLa PortableDrill 1365
+Texas Dallas PortableDrill 1365
+Virginia Arlington PortableDrill 1365
+PA Phila PortableDrill 1365
+TN Nashville PortableDrill 1365
+TN Nashville Mirror 1360
+TN Nashville ChestofDrawers 1350
+Nevada LasVegas Ladder 1335
+Texas Dallas Sofa 1290
+Nevada LasVegas DoorLock 1287
+Ohio Cincy Mirror 1275
+Missouri Kansas Painting 1275
+Arizona Phoenix Painting 1275
+MA Boston Safe 1265
+Texas Dallas BedDouble 1250
+CA SanFran BedDouble 1250
+Louisiana NoLa BedDouble 1250
+Louisiana NoLa Ladder 1246
+CA SanFran CoffeeTable 1236
+Nevada LasVegas LeafBlower 1212
+NY NY LeafBlower 1212
+TN Nashville LowChair 1200
+WA Seattle BedKing 1200
+Virginia Arlington BedKing 1200
+Oregon Portland BedKing 1200
+MA Boston OfficeChair 1190
+WA Seattle PortableDrill 1170
+Virginia Richmond PortableDrill 1170
+Georgia Atlanta DoorLock 1170
+Georgia Atlanta Armoire 1150
+Nevada LasVegas TallChair 1125
+PA Phila ComputerDesk 1122
+Louisiana NoLa Painting 1105
+Virginia Richmond LuggageCart 1104
+CA L.A Sofa 1075
+TN Nashville Sofa 1075
+CA SanFran Sofa 1075
+Oregon Portland Sofa 1075
+Missouri Kansas Sofa 1075
+Ohio Cincy Sofa 1075
+Missouri Kansas DoorLock 1053
+Illinois Chicago DoorLock 1053
+Illinois Chicago ChestofDrawers 1050
+Missouri Kansas TallChair 1050
+Nevada LasVegas Armoire 1035
+Nevada LasVegas Safe 1035
+Missouri Kansas Armoire 1035
+Georgia Atlanta ComputerDesk 1020
+Texas Dallas OfficeChair 1020
+Virginia Arlington Television 1000
+Virginia Arlington BedDouble 1000
+Virginia Richmond Television 1000
+NY NY Television 1000
+Oregon Portland BedDouble 1000
+Ohio Cincy Monitor 980
+MA Boston PortableDrill 975
+Missouri Kansas LuggageCart 966
+Oregon Portland LuggageCart 966
+NY NY Ficus 960
+MA Boston CoffeeMaker 952
+Colorado Denver DoorLock 936
+Ohio Cincy DoorLock 936
+Missouri Kansas OfficeChair 935
+Oregon Portland OfficeChair 935
+Louisiana NoLa OfficeChair 935
+Ohio Cincy CoffeeTable 927
+TN Nashville Safe 920
+Missouri Kansas ComputerDesk 918
+Louisiana NoLa ReadingChair 910
+Virginia Arlington Monitor 910
+Illinois Chicago BedKing 900
+PA Phila Ficus 880
+Arizona Phoenix Sofa 860
+Florida Orlando Mirror 850
+Virginia Arlington Mirror 850
+Missouri Kansas Mirror 850
+Georgia Atlanta Terminal 850
+Arizona Phoenix ReadingChair 840
+MA Boston LuggageCart 828
+Georgia Atlanta TallChair 825
+Colorado Denver SwivelChair 825
+Missouri Kansas CoffeeTable 824
+WA Seattle CoffeeTable 824
+Florida Orlando Armoire 805
+TN Nashville Ladder 801
+Virginia Richmond Ladder 801
+PA Phila Ladder 801
+Oregon Portland Ladder 801
+Florida Orlando Ladder 801
+PA Phila LowChair 800
+Virginia Arlington LowChair 800
+CA L.A Television 800
+WA Seattle Television 800
+Nevada LasVegas Television 800
+Colorado Denver PortableDrill 780
+Ohio Cincy PortableDrill 780
+Nevada LasVegas PortableDrill 780
+Arizona Phoenix FloorLamp 770
+Virginia Richmond ReadingChair 770
+CA L.A Monitor 770
+Arizona Phoenix Mirror 765
+Texas Dallas Mirror 765
+Virginia Richmond Mirror 765
+Virginia Richmond Painting 765
+TN Nashville OfficeChair 765
+TN Nashville BedDouble 750
+CA L.A SwivelChair 750
+Ohio Cincy BedDouble 750
+NY NY BedDouble 750
+PA Phila CoffeeTable 721
+Colorado Denver LowChair 720
+Georgia Atlanta LowChair 720
+Florida Orlando BusinessCards 720
+Colorado Denver CoffeeMaker 714
+Nevada LasVegas ComputerDesk 714
+CA L.A CoffeeMaker 714
+PA Phila DoorLock 702
+Ohio Cincy PrinterPaper 700
+Louisiana NoLa WirelessRouter 700
+MA Boston ReadingChair 700
+Virginia Richmond Monitor 700
+PA Phila Armoire 690
+WA Seattle Armoire 690
+CA SanFran Armoire 690
+Texas Dallas LuggageCart 690
+Virginia Arlington LuggageCart 690
+WA Seattle Safe 690
+Illinois Chicago LuggageCart 690
+CA L.A LuggageCart 690
+Nevada LasVegas OfficeChair 680
+TN Nashville PrinterToner 680
+Louisiana NoLa Terminal 680
+CA SanFran Mirror 680
+WA Seattle PrinterToner 680
+NY NY Terminal 680
+Nevada LasVegas Terminal 680
+Missouri Kansas Terminal 680
+Arizona Phoenix Terminal 680
+CA L.A Mirror 680
+MA Boston Mirror 680
+NY NY TallChair 675
+Colorado Denver TallChair 675
+TN Nashville FloorLamp 660
+CA SanFran BarStool 660
+WA Seattle Sofa 645
+Missouri Kansas Ficus 640
+WA Seattle ReadingChair 630
+Illinois Chicago Ladder 623
+CA L.A CoffeeTable 618
+MA Boston CoffeeTable 618
+Texas Dallas CoffeeTable 618
+Oregon Portland ComputerDesk 612
+Virginia Arlington LeafBlower 606
+Florida Orlando LeafBlower 606
+Florida Orlando FloorLamp 605
+Oregon Portland FloorLamp 605
+CA L.A BarStool 600
+Louisiana NoLa BedKing 600
+Florida Orlando SwivelChair 600
+Ohio Cincy Television 600
+Arizona Phoenix BusinessCards 600
+Nevada LasVegas ChestofDrawers 600
+Oregon Portland TallChair 600
+NY NY ChestofDrawers 600
+TN Nashville Television 600
+CA L.A BedKing 600
+Arizona Phoenix Television 600
+Nevada LasVegas BedKing 600
+MA Boston Television 600
+Oregon Portland PrinterToner 595
+Virginia Richmond PrinterToner 595
+Ohio Cincy Terminal 595
+TN Nashville CoffeeMaker 595
+PA Phila Terminal 595
+Missouri Kansas CoffeeMaker 595
+CA SanFran CoffeeMaker 595
+CA SanFran OfficeChair 595
+MA Boston Terminal 595
+Illinois Chicago CoffeeMaker 595
+Virginia Richmond DoorLock 585
+Georgia Atlanta PortableDrill 585
+Arizona Phoenix DoorLock 585
+CA SanFran Safe 575
+Colorado Denver Safe 575
+TN Nashville Armoire 575
+Louisiana NoLa Safe 575
+Louisiana NoLa Armoire 575
+NY NY Conditioner 560
+MA Boston Monitor 560
+CA SanFran WirelessRouter 560
+CA L.A SideTable 560
+Illinois Chicago LargePlant 560
+Ohio Cincy LargePlant 560
+Illinois Chicago Ficus 560
+Nevada LasVegas ReadingChair 560
+Illinois Chicago WirelessRouter 560
+Virginia Richmond SideTable 560
+Missouri Kansas LowChair 560
+NY NY WirelessRouter 560
+Colorado Denver LuggageCart 552
+Georgia Atlanta LuggageCart 552
+Arizona Phoenix PrinterPaper 550
+Louisiana NoLa PrinterPaper 550
+Texas Dallas FloorLamp 550
+Oregon Portland BusinessCards 540
+WA Seattle Ladder 534
+CA L.A Ladder 534
+Ohio Cincy DoorKnob 533
+CA L.A TallChair 525
+Oregon Portland SwivelChair 525
+MA Boston SwivelChair 525
+Illinois Chicago TallChair 525
+Louisiana NoLa SwivelChair 525
+Missouri Kansas Moisturizer 520
+CA L.A LargeAreaRug 520
+WA Seattle Mouthwash 520
+Oregon Portland CoffeeTable 515
+Texas Dallas ComputerDesk 510
+WA Seattle Terminal 510
+Colorado Denver ComputerDesk 510
+Ohio Cincy ComputerDesk 510
+Louisiana NoLa Mirror 510
+CA L.A Painting 510
+Florida Orlando ComputerDesk 510
+NY NY ComputerDesk 510
+WA Seattle ComputerDesk 510
+Georgia Atlanta Painting 510
+CA L.A PrinterToner 510
+Colorado Denver Mirror 510
+Ohio Cincy PrinterToner 510
+CA SanFran FloorLamp 495
+Louisiana NoLa Photograph 495
+Florida Orlando TableLamp 494
+Nevada LasVegas WirelessRouter 490
+Missouri Kansas WirelessRouter 490
+Colorado Denver WirelessRouter 490
+Georgia Atlanta Ficus 480
+MA Boston Ficus 480
+CA L.A Shampoo 480
+NY NY LowChair 480
+Colorado Denver Conditioner 480
+Oregon Portland BarStool 480
+Virginia Richmond Ficus 480
+Nevada LasVegas LowChair 480
+Ohio Cincy Ficus 480
+CA L.A BusinessCards 480
+Ohio Cincy BarStool 480
+Illinois Chicago LowChair 480
+TN Nashville Ficus 480
+Virginia Arlington BarStool 480
+NY NY CoffeeMaker 476
+Louisiana NoLa DoorLock 468
+Florida Orlando Safe 460
+Georgia Atlanta Safe 460
+Missouri Kansas Safe 460
+NY NY HandSoap 455
+Illinois Chicago DoorKnob 451
+TN Nashville DoorKnob 451
+MA Boston DoorKnob 451
+PA Phila SwivelChair 450
+Texas Dallas ChestofDrawers 450
+Virginia Arlington TallChair 450
+Georgia Atlanta SwivelChair 450
+CA SanFran TallChair 450
+NY NY SwivelChair 450
+Colorado Denver ChestofDrawers 450
+Virginia Richmond PrinterPaper 450
+TN Nashville TallChair 450
+MA Boston ChestofDrawers 450
+Texas Dallas PrinterPaper 450
+Ohio Cincy TallChair 450
+Ohio Cincy ChestofDrawers 450
+Ohio Cincy EnvelopesLegal 448
+MA Boston Ladder 445
+Georgia Atlanta Ladder 445
+Arizona Phoenix Ladder 445
+CA L.A Conditioner 440
+MA Boston FloorLamp 440
+Ohio Cincy Shampoo 440
+Arizona Phoenix Moisturizer 440
+Georgia Atlanta LargeAreaRug 440
+Illinois Chicago Mouthwash 440
+Texas Dallas Moisturizer 440
+Georgia Atlanta Shampoo 440
+Colorado Denver FloorLamp 440
+Arizona Phoenix Conditioner 440
+NY NY Shampoo 440
+Missouri Kansas BedSheetKing 435
+Nevada LasVegas Sofa 430
+NY NY Sofa 430
+CA L.A OfficeChair 425
+CA L.A Terminal 425
+NY NY PrinterToner 425
+Nevada LasVegas PrinterToner 425
+CA SanFran PrinterToner 425
+PA Phila WirelessRouter 420
+Louisiana NoLa Monitor 420
+CA SanFran ReadingChair 420
+Virginia Richmond BarStool 420
+Georgia Atlanta BusinessCards 420
+Nevada LasVegas BusinessCards 420
+Colorado Denver Monitor 420
+Texas Dallas BarStool 420
+NY NY BarStool 420
+Oregon Portland Telephone 418
+Texas Dallas Telephone 418
+Nevada LasVegas LuggageCart 414
+WA Seattle LuggageCart 414
+Nevada LasVegas CoffeeTable 412
+Virginia Arlington CoffeeTable 412
+Missouri Kansas DoorKnob 410
+Virginia Richmond ComputerDesk 408
+Oregon Portland AlarmClock 405
+Georgia Atlanta LargeVase 405
+Nevada LasVegas Photograph 405
+Virginia Richmond AlarmClock 405
+Arizona Phoenix LeafBlower 404
+CA L.A LeafBlower 404
+Georgia Atlanta LeafBlower 404
+Louisiana NoLa Television 400
+PA Phila Moisturizer 400
+TN Nashville Moisturizer 400
+PA Phila Conditioner 400
+WA Seattle Conditioner 400
+TN Nashville Shampoo 400
+NY NY PortableDrill 390
+WA Seattle BathSoap 385
+Louisiana NoLa BathSoap 385
+Illinois Chicago Telephone 380
+WA Seattle Telephone 380
+Texas Dallas BedSheetKing 377
+Tennessee Nashville SwivelChair 375
+WA Seattle SwivelChair 375
+Virginia Richmond SwivelChair 375
+Nevada LasVegas SwivelChair 375
+Virginia Arlington SwivelChair 375
+Arizona Phoenix SwivelChair 375
+Louisiana NoLa SmallVase 363
+Ohio Cincy Moisturizer 360
+NY NY EndTable 360
+Nevada LasVegas Mouthwash 360
+PA Phila WindowScreen 360
+CA SanFran EndTable 360
+Virginia Richmond Mouthwash 360
+Nevada LasVegas Shampoo 360
+Virginia Richmond Moisturizer 360
+Virginia Arlington WindowScreen 360
+Virginia Arlington SideTable 360
+MA Boston BusinessCards 360
+WA Seattle SideTable 360
+Arizona Phoenix Mouthwash 360
+Louisiana NoLa BarStool 360
+Illinois Chicago SideTable 360
+NY NY SideTable 360
+Texas Dallas BusinessCards 360
+TN Nashville CoffeeCup 360
+Arizona Phoenix CoffeeMaker 357
+Louisiana NoLa CoffeeMaker 357
+Oregon Portland CoffeeMaker 357
+Georgia Atlanta CoffeeMaker 357
+CA SanFran Ladder 356
+WA Seattle DoorLock 351
+Virginia Richmond LargeVase 351
+NY NY DoorLock 351
+Florida Orlando Monitor 350
+CA SanFran LargePlant 350
+Georgia Atlanta HandSoap 350
+Oregon Portland ReadingChair 350
+CA SanFran Monitor 350
+Georgia Atlanta TissueBox 350
+Virginia Arlington WirelessRouter 350
+Virginia Arlington ReadingChair 350
+PA Phila ReadingChair 350
+Missouri Kansas Monitor 350
+Virginia Arlington BedSheet(King) 348
+Illinois Chicago Armoire 345
+Oregon Portland Armoire 345
+Texas Dallas Safe 345
+Arizona Phoenix Armoire 345
+Arizona Phoenix Safe 345
+MA Boston Armoire 345
+Illinois Chicago Safe 345
+PA Phila Safe 345
+Ohio Cincy Armoire 345
+Virginia Richmond Armoire 345
+Virginia Richmond Telephone 342
+PA Phila Painting 340
+Georgia Atlanta OfficeChair 340
+Florida Orlando Painting 340
+Arizona Phoenix PrinterToner 340
+WA Seattle OfficeChair 340
+MA Boston Painting 340
+Colorado Denver Painting 340
+NY NY Mirror 340
+Louisiana NoLa PrinterToner 340
+Illinois Chicago OfficeChair 340
+CA SanFran Painting 340
+Texas Dallas Terminal 340
+Nevada LasVegas Painting 340
+Georgia Atlanta PrinterToner 340
+Virginia Arlington CoffeeCup 336
+Louisiana NoLa FloorLamp 330
+WA Seattle FloorLamp 330
+Virginia Arlington FloorLamp 330
+Illinois Chicago SmallVase 330
+MA Boston EndTable 330
+CA L.A DoorKnob 328
+Nevada LasVegas Gaffer'sTape 324
+Oregon Portland LargeVase 324
+Illinois Chicago Gaffer'sTape 324
+Georgia Atlanta Mouthwash 320
+Texas Dallas Conditioner 320
+PA Phila Mouthwash 320
+Missouri Kansas Shampoo 320
+CA SanFran LowChair 320
+Florida Orlando SideTable 320
+PA Phila SideTable 320
+Nevada LasVegas Ficus 320
+Oregon Portland LowChair 320
+Nevada LasVegas LargeAreaRug 320
+Oregon Portland Moisturizer 320
+Illinois Chicago Conditioner 320
+Oregon Portland BedSheetKing 319
+WA Seattle BedSheetKing 319
+Louisiana NoLa BedSheetKing 319
+Louisiana NoLa HandSoap 315
+Ohio Cincy AlarmClock 315
+WA Seattle AlarmClock 315
+Nevada LasVegas LargePlant 315
+Texas Dallas Photograph 315
+Ohio Cincy HandSoap 315
+Illinois Chicago AlarmClock 315
+Oregon Portland BathSoap 315
+Virginia Richmond LargePlant 315
+Nevada LasVegas CoffeeCup 312
+;
+RUN;
+
+*****Vamos a ordenar los datos de ORDERS para posteriormente unirlo con la tabla PROD (tambien
+ordenaremos la tabla de PROD), esto es los siguientes dos parrafos de codigo, los uniremos
+con el PRODUCID**********;
+PROC SORT DATA = WORK.ORDERS
+OUT= WORK.ORDERS;
+BY PRODUCTID;
+RUN;
+
+PROC SORT DATA = WORK.PROD
+OUT=WORK.PROD;
+BY PRODUCTID;
+RUN;
+
+***** En esta parte usaremos MERGE para unir las tablas, las columnas en comun solo apareceran
+una vez***** ;
+DATA UNION3;
+MERGE WORK.ORDERS (IN=E)
+	WORK.PROD (IN=F);
+BY PRODUCTID;
+IF E=1 AND F=1 THEN OUTPUT;
+RUN;
+
+*****Vamos a ordenar los datos de PROP (tambien los datos de la tabla SALE) para posteriormente 
+unirlo con la tabla SALE, esto es los siguientes dos parrafos de codigo, los uniremos con el
+PROPERTYSTATE ya que es una de las columnas en común*****;
+PROC SORT DATA = WORK.PROP
+OUT= WORK.PROP;
+BY PROPERTYSTATE;
+RUN;
+
+PROC SORT DATA = WORK.SALE
+OUT=WORK.SALE;
+BY PROPERTYSTATE;
+RUN;
+
+***** En esta parte usaremos MERGE para unir las tablas, las columnas en comun solo apareceran
+una vez***** ;
+DATA UNION4;
+MERGE WORK.PROP (IN=G)
+	WORK.SALE (IN=H);
+BY PROPERTYSTATE;
+IF G=1 AND H=1 THEN OUTPUT;
+RUN;
+
+*****Vamos a ordenar los datos de UNION3 Y UNION4 esto es los siguientes dos parrafos de codigo,
+los uniremos con el PRODUCNAME ya que es una de las columnas en común*****;
+PROC SORT DATA=WORK.UNION3
+OUT=WORK.UNION3;
+BY PRODUCTNAME;
+RUN;
+
+PROC SORT DATA=WORK.UNION4
+OUT=WORK.UNION4;
+BY PRODUCTNAME;
+RUN;
+
+***** En esta parte tendremos la union final de las 4 tablas a esta tabla la llamaremos 
+UNIONF, usaremos MERGE para unir las tablas, las columnas en comun solo apareceran una vez***** ;
+DATA UNIONF;
+MERGE WORK.UNION3 (IN=I)
+	WORK.UNION4 (IN=J);
+BY PRODUCTNAME;
+IF I=1 AND J=1 THEN OUTPUT;
+RUN;
+
+***EN ESTA PARTE SOLO JUGAREMOS PARA PODER QUE HACEN LOS CODIGOS****
+
+*****En esta tabla podremos ver como se distribuye la cantidad respecto al precio****;
+PROC FREQ DATA=WORK.UNIONF;
+	TABLES QUANTITY*PRICE / NOPERCENT NOROW NOCOL;
+RUN;
+
+*****En esta tabla podremos ver que solo seleccionaremos una parte de la tabla anterior,es 
+decir, precios mayores a 150****;
+PROC FREQ DATA=WORK.UNIONF;
+	TABLES QUANTITY*PRICE / NOPERCENT NOROW NOCOL;
+	WHERE PRICE>150;
+RUN;
+
+*****Nuevamente usaremos el FREQ y veremos la distribucion de los estados respecto a la 
+cantidad*****;
+PROC FREQ DATA=WORK.UNIONF;
+	TABLES PROPERTYSTATE*QUANTITY / NOROW NOCOL;
+RUN;
+
+*****Usaremos el FREQ y veremos la distribucion de las categorias del producto respecto a la 
+cantidad y en el siguiente parrafo es lo mismo pero en esta la guardaremos y no la 
+imprimiremos*****;
+PROC FREQ DATA=WORK.UNIONF;
+	TABLES PRODUCTCATEGORY*QUANTITY / NOPERCENT NOROW NOCOL;
+RUN;
+
+PROC FREQ DATA=WORK.UNIONF;
+	TABLES PRODUCTCATEGORY*QUANTITY / NOPERCENT NOROW NOCOL NOPRINT OUT=PRCQ;
+RUN;
+
+*****Aqui veremos la frecuencia por estado*****;
+PROC FREQ DATA=PROP;
+TABLES PROPERTYSTATE /NOROW NOCOL NOPERCENT;
+RUN;
+
+*****Enta parte veremos un analisis de la variable sale, podremos ver los momentos, medidas basicas
+de estadistica, cuantiles, ect*****;
+PROC UNIVARIATE DATA=WORK.UNIONF;
+VAR SALES;
+RUN;
+
+*****Aqui veremos el analisis de la variable QUANTITY por estado, por nombre y ID del producto
+y la guardaremos*****;
+PROC MEANS DATA=WORK.UNIONF;
+CLASS PROPERTYSTATE PRODUCTNAME PRODUCTID;
+VAR QUANTITY;
+OUTPUT OUT= M_QUANTITY;
+RUN;
+
+*****Aqui veremos el analisis de la variable SALE por estado, por ventas y por ID del producto
+y la guardaremos*****;
+PROC MEANS DATA=WORK.UNIONF;
+CLASS PROPERTYSTATE PRODUCTID SALES;
+VAR QUANTITY;
+OUTPUT OUT= S_QUANTITY;
+RUN;
+
+*****Realizaremos dos queries por estado en este caso NY y Ohio en donde nos daran las 11
+columnas pero solo de NY y en el otro caso Ohio****;
+DATA QUERY1;
+SET WORK.UNIONF;
+WHERE PROPERTYSTATE LIKE '%Ohio%';
+RUN;
+
+DATA QUERY2;
+SET WORK.UNIONF;
+WHERE PROPERTYSTATE LIKE '%NY%';
+RUN;
+
+*****Vamos analizar los queries con MEANS***** ;
+PROC MEANS DATA=QUERY2;
+CLASS PROPERTYSTATE PRODUCTNAME PRICE;
+VAR QUANTITY;
+OUTPUT OUT= Q2_QUANTITY;
+RUN;
+
+PROC MEANS DATA=QUERY1;
+CLASS PROPERTYSTATE PRODUCTNAME PRICE;
+VAR QUANTITY;
+OUTPUT OUT= Q1_QUANTITY;
+RUN;
+
+*****A PARTIR DE AQUI VAMOS HACER UN ANALISIS DE NUESTROS DATOS*****
+
+*****Aqui veremos la suma total de ventas por estados*****;
+PROC TABULATE DATA=WORK.UNIONF;
+VAR SALES;
+CLASS PROPERTYSTATE;
+TABLE PROPERTYSTATE,
+SALES;
+RUN;
+
+*****Aqui veremos la suma total de ventas por ciudad*****;
+PROC TABULATE DATA=WORK.UNIONF;
+VAR SALES;
+CLASS PROPERTYCITY;
+TABLE PROPERTYCITY,
+SALES;
+RUN;
+
+*****Veremos el numero de productos pedidos*****;
+PROC TABULATE DATA=WORK.UNIONF;
+VAR QUANTITY;
+CLASS PRODUCTNAME;
+TABLE PRODUCTNAME,
+QUANTITY;
+RUN;
+
+****veremos la suma de los productos por el precio****;
+PROC TABULATE DATA=WORK.UNIONF;
+VAR PRICE;
+CLASS PRODUCTNAME;
+TABLE PRODUCTNAME,
+PRICE;
+RUN;
+
+*****Veremos el numero de productos pedidos por categorias*****;
+PROC TABULATE DATA=WORK.UNIONF;
+VAR QUANTITY;
+CLASS PRODUCTCATEGORY;
+TABLE PRODUCTCATEGORY,
+QUANTITY;
+RUN;
