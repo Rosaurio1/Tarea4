@@ -31,6 +31,7 @@ RUN;
 
 DATA ORDERS;
 INPUT OrderID OrderDate : MMDDYY10. PropertyID ProductID Quantity;
+FORMAT OrderDate MMDDYY10.;
 DATALINES;
 1 01/01/2015 17 41 1
 2 01/01/2015 15 54 2
@@ -1308,11 +1309,8 @@ SALES;
 RUN;
 
 *****Veremos el numero de productos pedidos*****;
-PROC TABULATE DATA=WORK.UNIONF;
-VAR QUANTITY;
-CLASS PRODUCTNAME;
-TABLE PRODUCTNAME,
-QUANTITY;
+PROC FREQ DATA=UNIONF;
+TABLES PRODUCTNAME*QUANTITY / NOPERCENT NOROW NOCOL;
 RUN;
 
 ****veremos la suma de los productos por el precio****;
